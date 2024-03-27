@@ -3,6 +3,7 @@ from data import matrixData,storeData
 
 def newMatrix():
     """Creates a new  matrix with user input for rows and columns"""
+    print("\n------------------------------")
     print("\n__New Matrix__")
     print("a. Create a zero matrix")
     print("b. Create an identity matrix")

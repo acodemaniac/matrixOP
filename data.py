@@ -10,7 +10,7 @@ def storeData(variableName, data):
     """
     matrixData[variableName] = data
     
-def getData(variableName):
+def getData():
     """Gets Data from the matrixData dictionary
 
     Args:
@@ -19,4 +19,9 @@ def getData(variableName):
     Returns:
         data: It helps in  getting the data of the specific key.
     """
-    return matrixData.get(variableName)
+    while True:
+        try:
+            variableName = input("Enter the variable name")
+            return matrixData.get(variableName)
+        except KeyError:
+            print("Variable name not found. Please enter a valid variable name.")
