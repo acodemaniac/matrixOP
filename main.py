@@ -1,34 +1,11 @@
-import numpy as np
-
-
-def zeroMatrix():
-    """Creates a Matrix with using Numpy Zeroes Function"""
-    while True:
-        try:
-            rows, columns = map(int, input(
-                "Enter number of rows and columns (with space): ").split())
-            A = np.zeros((rows, columns))
-            print(A)
-            break
-        except ValueError:
-            print("Please enter valid rows and columns")
-
-
-def performOP():
-    print("performOP")
-
-
-def userMatrix():
-    print("User matrix")
-
-
-def exitPro():
-    """Function to exit the program"""
-    print("Exiting...")
-    quit()
-
+from zeroMatrix import  zeroMatrix
+from userDefinedMatrix import userMatrix
+from exitProgram import exitPro
+from operations import veryGood
 
 def menu():
+    """This is MENU bar here is where you can select various options to perform your actions
+    """
     while True:
         print("\n__MENU__")
         print("1. Create a Zero Matrix")
@@ -40,7 +17,7 @@ def menu():
         actions = {
             '1': zeroMatrix,
             '2': userMatrix,
-            '3': performOP,
+            '3': veryGood,
             '4': exitPro
         }
         action = actions.get(choice, lambda: print("Invalid choice"))

@@ -1,0 +1,2 @@
+def veryGood():
+    return 'hello'
