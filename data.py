@@ -1,9 +1,22 @@
 matrixData = {}
 
 
-def storeData(variable_name, data):
-    matrixData[variable_name] = data
+def storeData(variableName, data):
+    """Stores Data in the to the given matrixData dictionary
+
+    Args:
+        variableName (string): Key for matrixData
+        data (matrix): Value for matrixData
+    """
+    matrixData[variableName] = data
     
-def getData(variable_name):
-    return matrixData.get(variable_name, None)
-    
+def getData(variableName):
+    """Gets Data from the matrixData dictionary
+
+    Args:
+        variableName (string): It's a given key for the matrixData dictionary 
+
+    Returns:
+        data: It helps in  getting the data of the specific key.
+    """
+    return matrixData.get(variableName)

@@ -4,3 +4,4 @@ def exitPro():
     """
     
     print("Exiting Program")
+    quit()
