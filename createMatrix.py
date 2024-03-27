@@ -8,14 +8,7 @@ def newMatrix():
     print("b. Create an identity matrix")
     print("c. Create a user input matrix")
     
-    choice = input("Enter your choice: ")
-    actions = {
-        '1': zeroMatrix,
-        '2': identityMatrix,
-        '3': userMatrix
-    }
-    action = actions.get(choice, lambda: print("Invalid choice"))
-    action()
+    
     
     # ZERO MATRIX
     def zeroMatrix():
@@ -61,7 +54,15 @@ def newMatrix():
                 storeData(varName, np.array(tempData))  
                 break
             except ValueError:
-                print("Please enter valid rows, columns, and elements")    
+                print("Please enter valid rows, columns, and elements")   
                 
-
-    
+                
+                
+    choice = input("Enter your choice: ")
+    actions = {
+        '1': zeroMatrix,
+        '2': identityMatrix,
+        '3': userMatrix
+    }
+    action = actions.get(choice, lambda: print("Invalid choice"))
+    action()
