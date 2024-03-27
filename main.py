@@ -1,7 +1,7 @@
 import numpy as np 
 
 def matrix():
-    """Creates a Matrix Function"""
+    """Creates a Matrix with using Numpy Zeroes Function"""
     while True:
         try:
             rows=int(input("Number of rows :"))
