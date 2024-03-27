@@ -26,6 +26,20 @@ def newMatrix():
                 break
             except ValueError:
                 print("Please enter valid rows and columns")
+                
+
+    def identityMatrix():
+        """Create an Identity  Matrix"""
+        global  matrixData
+        while True:
+            try:
+                varName = input("Enter the Matrix name: ")
+                rows, columns = map(int, input(f"Enter number of rows and columns (for {varName}: ").split())
+                
+                break
+            except:
+                print("Please enter valid rows and columns")
+
 
 
 
