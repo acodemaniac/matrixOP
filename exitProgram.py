@@ -1,4 +1,6 @@
 def exitPro():
-    """Function to exit the program"""
-    print("Exiting...")
-    quit()
+    
+    """Exits the Program Successfully
+    """
+    
+    print("Exiting Program")
