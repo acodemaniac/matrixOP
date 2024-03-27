@@ -1,5 +1,4 @@
-from zeroMatrix import  zeroMatrix
-from userDefinedMatrix import userMatrix
+from createMatrix import  zeroMatrix,userMatrix
 from exitProgram import exitPro
 from operations import veryGood
 

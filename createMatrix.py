@@ -12,3 +12,7 @@ def zeroMatrix():
             break
         except ValueError:
             print("Please enter valid rows and columns")
+            
+            
+def userMatrix():
+    print("User matrix")
