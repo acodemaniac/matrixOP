@@ -28,7 +28,7 @@ def getData():
         try:
             with open('data.json', 'r') as f:
                 mData = json.load(f)
-            print(np.array(mData[input('Enter the variable name: ')]))
+            print(np.mat(mData[input('Enter the variable name: ')]))
             break
         except FileNotFoundError:
             print(f"File '{mData.json}' not found. Please provide a valid filename.")

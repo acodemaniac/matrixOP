@@ -17,8 +17,8 @@ def newMatrix():
             while True:
                 try:
                     varName = input("Enter the Matrix name: ")
-                    rows, columns = map(int, input(f"Enter number of rows and columns for {varName}: ").split())
-                    tempData = np.zeros((rows, columns))
+                    rows, columns, dim = map(int, input(f"Enter number of rows, columns and dimensions for {varName}: ").split())
+                    tempData = np.zeros((rows, columns, dim))
                     print(tempData)
                     storeData(varName, tempData)
                     break
