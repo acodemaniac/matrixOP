@@ -13,7 +13,7 @@ def menu():
         print("1. Create a NewMatrix")
         # print("2. Create a ")
         print("3. Matrix Operations")
-        print("4. Print the Matrix Data")
+        print("4. Load the Matrix Data")
         print("5. Exit the Program")
 
         choice = input("Enter your choice: ")
