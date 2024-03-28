@@ -1,11 +1,22 @@
-from createMatrix import newMatrix
-from exitProgram import exitPro
+import sys
+import time
 from data import getData
-# from operations import veryGood
+from createMatrix import zeroMatrix, identityMatrix,scalarMatrix,constantMatrix,userMatrix
+
+def exitPro():
+
+    """Exits the Program Successfully"""
+
+    if input("Are you sure you want to quit?  (y/n): ").lower() == 'y':
+        print("\nThank You for using our program!\n")
+        time.sleep(1)
+        print("\t--Successful--")
+        sys.exit(0)
+    else:
+        mainMenu()
 
 
-
-def menu():
+def mainMenu():
     """This is MENU bar here is where you can select various options to perform your actions
     """
     while True:
@@ -26,8 +37,35 @@ def menu():
         action = actions.get(choice, lambda: print("Invalid choice"))
         action()
 
+def newMatrix():
+
+    """Creates a new matrix with user input for rows and columns"""
+
+    while True:
+        print("\n------------------------------")
+        print("\n__New Matrix__")
+        print("1. Create a zero matrix")
+        print("2. Create an identity matrix")
+        print("3. Create a constant matrix")
+        print("4. Create a scalar matrix")
+        print("5. Create a user input matrix")
+        print("8. Go back to main menu")
+        print("9. Exit the Program")
+
+        choice = input("Enter your choice: ")
+        actions = {
+            '1': zeroMatrix,
+            '2': identityMatrix,
+            '3': constantMatrix, 
+            '4': scalarMatrix,
+            '5': userMatrix,
+            '8': mainMenu,
+            '9': exitPro
+        }
+        action = actions.get(choice, lambda: print("Invalid choice"))
+        action()
 
 
 
 if __name__ == "__main__":
-    menu()
+    mainMenu()
