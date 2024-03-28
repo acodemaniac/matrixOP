@@ -14,9 +14,7 @@ for i in range(rows):
             column.append(element)
         row.append(column)    
     tempData.append(row)
-    
-    
-    
+
 #best way to write the above code
 
 tempData = np.array([[[float(input(f"Enter element at position ({i+1},{j+1},{k+1}): ")) for k in range(dim)] for j in range(columns)] for i in range(rows)])

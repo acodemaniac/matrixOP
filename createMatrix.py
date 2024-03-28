@@ -61,7 +61,13 @@ def userMatrix():
 
 def scalarMatrix():
     """Calls the Identity Matrix and then multiplies the given number by it."""
-    tempData = identityMatrix()
-    num = float(input("Enter a Number"))
-    scaMat = tempData*num
     
+    while True:
+        try:
+            varName = input("Enter the Matrix name: ")
+            tempData = np.eye(int(input(f"Enter size of the identity matrix for {varName}: "))*int(input("Enter the multiplication number: ")))
+            print(tempData)
+            storeData(varName, tempData)
+            break
+        except ValueError:
+            print("Please enter a valid size")

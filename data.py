@@ -5,17 +5,21 @@ matrixData = {}
 
 
 def storeData(variableName, data):
-    """Stores Data in the to the given matrixData dictionary
+    """Stores Data in the given matrixData dictionary
 
     Args:
         variableName (string): Key for matrixData
-        data (matrix): Value for matrixData
-    """
-    global matrixData
+        data (matrix): Value for matrixData"""
+
+    try:
+        with open('data.json', 'r') as f:
+            matrixData = json.load(f)
+    except FileNotFoundError:
+        matrixData = {}
     matrixData[variableName] = data.tolist()
-    with open('data.json', "w") as f:
+    with open('data.json', 'w') as f:
         json.dump(matrixData, f)
-    
+
 def getData():
     """Gets Data from the matrixData dictionary
 
@@ -23,8 +27,8 @@ def getData():
         variableName (string): It's a given key for the matrixData dictionary 
 
     Returns:
-        data: It helps in  getting the data of the specific key.
-    """
+        data: It helps in  getting the data of the specific key."""
+
     while True:
         try:
             with open('data.json', 'r') as f:
