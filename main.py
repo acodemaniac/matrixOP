@@ -10,7 +10,7 @@ def exitPro():
     if input("Are you sure you want to quit?  (y/n): ").lower() == 'y':
         print("\nThank You for using our program!\n")
         time.sleep(1)
-        print("\t--Successful--")
+        print("\t-Successful!!-")
         sys.exit(0)
     else:
         mainMenu()
