@@ -11,6 +11,7 @@ def storeData(variableName, data):
         variableName (string): Key for matrixData
         data (matrix): Value for matrixData
     """
+    global matrixData
     matrixData[variableName] = data.tolist()
     with open('data.json', "w") as f:
         json.dump(matrixData, f)
