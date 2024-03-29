@@ -14,12 +14,12 @@ def storeData(variableName, data):
     try:
         with open('data.json', 'r') as f:
             matrixData = json.load(f)
-            matrixData = np.array(matrixData)
+            mData = np.array(matrixData)
     except FileNotFoundError:
         matrixData = {}
-    matrixData[variableName] = data.tolist()
+    mData[variableName] = data.tolist()
     with open('data.json', 'w') as f:
-        json.dump(matrixData, f)
+        json.dump(mData, f)
 
 def getData():
     """Gets Data from the matrixData dictionary
