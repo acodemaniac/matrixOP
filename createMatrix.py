@@ -1,5 +1,5 @@
 import numpy as np
-from data import matrixData, storeData
+from data import storeData
 
 
 
