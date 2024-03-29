@@ -14,6 +14,7 @@ def storeData(variableName, data):
     try:
         with open('data.json', 'r') as f:
             matrixData = json.load(f)
+            matrixData = np.array(matrixData)
     except FileNotFoundError:
         matrixData = {}
     matrixData[variableName] = data.tolist()
