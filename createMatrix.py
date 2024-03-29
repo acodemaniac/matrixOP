@@ -12,7 +12,7 @@ def zeroMatrix():
             tempData = np.zeros((rows, columns, dim))
             print(tempData)
             storeData(varName, tempData)
-
+            break
         except ValueError:
             print("Please enter valid values for rows, columns and dimensions")
 
@@ -25,6 +25,7 @@ def identityMatrix():
             tempData = np.eye(int(input(f"Enter size of the identity matrix for {varName}: ")))
             print(tempData)
             storeData(varName, tempData)
+            break
         except ValueError:
             print("Please enter a valid size")
 
@@ -39,6 +40,7 @@ def constantMatrix():
             tempData = np.full_like(np.array(rows,columns),constant)
             print(tempData)
             storeData(varName, tempData)
+            break
         except ValueError:
             print("Please enter valid constant value, row and column. ")
 
@@ -55,7 +57,8 @@ def userMatrix():
             print("Matrix created successfully:")
             for row in tempData:
                 print(row)
-            storeData(varName, np.array(tempData))  
+            storeData(varName, np.array(tempData))
+            break
         except ValueError:
             print("Please enter valid rows, columns, and elements")
 
@@ -72,5 +75,6 @@ def scalarMatrix():
             tempData*=numb
             print(tempData)
             storeData(varName, tempData)
+            break
         except ValueError:
             print("Please enter a valid size")

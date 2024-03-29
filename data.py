@@ -3,7 +3,7 @@ import numpy as np
 
 
 
-def storeData(varName, data):
+def storeData(varName, tempData):
     """Stores Data in the given matrixData dictionary
 
     Args:
@@ -15,8 +15,9 @@ def storeData(varName, data):
             matrixData = json.load(f)
             mData = np.array(matrixData)
     except FileNotFoundError:
-        matrixData = {}
-    mData[varName] = data.tolist()
+            print("Please enter  a valid file name.")
+            return None
+    mData[varName] = tempData.tolist()
     with open('data.json', 'w') as f:
         json.dump(mData, f)
 
