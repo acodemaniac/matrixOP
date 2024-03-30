@@ -31,7 +31,7 @@ def mainMenu():
             '1': newMatrix,
             # '2': something,
             # '3': veryGood,
-            '4': getData,
+            '4': getOptions,
             '5': exitPro
         }
         action = actions.get(choice, lambda: print("Invalid choice"))
@@ -62,9 +62,29 @@ def newMatrix():
             '8': mainMenu,
             '9': exitPro
         }
-        action = actions.get(choice, lambda: print("Invalid choice"))
+        action = actions.get(choice, lambda : print("Invalid choice"))
         action()
 
+def getOptions():
+    """Options for get Data functions"""
+
+    print("1. Get Your Data from 'Zero Matrix'")
+    print("2. Get Your Data from 'Identity Matrix'")
+    print("3. Get Your Data from 'Constant Matrix'")
+    print("4. Get Your Data from 'Scalar Matrix'")
+    print("5. Get Your Data from 'User Matrix'")
+
+    matrices = {
+        '1': 'zeroMatrix',
+        '2': 'identityMatrix',
+        '3': 'constantMatrix',
+        '4': 'scalarMatrix',
+        '5': 'userMatrix'
+    }
+
+    choice = input("Enter a given")
+    matrixName = matrices.get(choice, lambda : print("Invalid Choice"))
+    getData(matrixName)
 
 
 if __name__ == "__main__":

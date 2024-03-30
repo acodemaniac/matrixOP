@@ -3,18 +3,26 @@ from data import storeData
 
 
 
+
+
 def zeroMatrix():
     """Creates a Matrix using NumPy Zeroes Function"""
     while True:
         try:
             varName = input("Enter the Matrix name: ")
-            rows, columns, dim = map(int, input(f"Enter number of rows, columns and dimensions for {varName}: ").split())
-            tempData = np.zeros((rows, columns, dim))
+            rows = int(input(f"Enter number of rows for {varName}: "))
+            columns = int(input(f"Enter number of columns for {varName}: "))
+            dim = int(input(f"Enter number of dimensions for {varName}: "))
+            if input("Do you want to store this data? (y/n): ").lower() == 'y':
+                tempData = np.zeros((rows, columns, dim))
             print(tempData)
-            storeData(varName, tempData)
+            storeData("zeroMatrix", varName, tempData)
             break
         except ValueError:
-            print("Please enter valid values for rows, columns and dimensions")
+            print("Please enter valid integer values for rows, columns, and dimensions")
+
+# The rest of your code remains the same
+
 
 def identityMatrix():
     """Create an Identity Matrix"""
