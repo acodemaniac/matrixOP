@@ -20,16 +20,25 @@ def mainMenu():
     """This is MENU bar here is where you can select various options to perform your actions
     """
     
-    while True:
-
-        question = input("Are you an existing user? (y/n)").lower()
-        if user == 'n':
+    try:
+        question = input("Are you an existing user? (y/n)").upper()
+        if user == 'Y':
+            userName = input("Enter you name: ")
+            existingUser(userName)
+            None
+        if user == 'N':
             userName = input("Enter your name: ")
             addUser(userName)
             print('\n...')
             time.sleep(1)
-            print("Succefully added!" + userName)
+            print("Successfully added!" + userName)
             print(userName + ', welcome!')
+    except ValueError:
+        print("Please enter 'Y' for Yes or 'N' for No only.")
+
+    while True:
+
+        
         print("\n__MENU__")
         print("1. Create a NewMatrix")
         print("3. Matrix Operations")

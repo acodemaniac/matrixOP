@@ -14,7 +14,13 @@ def addUser(userName):
             }
     except FileNotFoundError:
             print("Please enter  a valid file name.")
-        
+
+def existingUser(userName):
+    try:
+        with open('data.json', 'r') as f:
+            mData = json.load(f)
+        if userName =
+
 
 def storeData(funName, varName, tempData):
     """Stores Data in the given matrixData dictionary
