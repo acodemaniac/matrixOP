@@ -1,7 +1,20 @@
 import json
 import numpy as np
 
-
+def addUser(userName):
+    try:
+        with open('data.json', 'r') as f:
+            matrixData = json.load(f)
+        matrixData[userName] = {
+            'zeroMatrix' : {},
+            'identityMatrix' : {},
+            'constantMatrix': {},
+            'scalarMatrix' : {},
+            'userMatrix' : {}
+            }
+    except FileNotFoundError:
+            print("Please enter  a valid file name.")
+        
 
 def storeData(funName, varName, tempData):
     """Stores Data in the given matrixData dictionary

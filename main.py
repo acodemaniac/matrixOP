@@ -1,6 +1,6 @@
 import sys
 import time
-from data import getData
+from data import getData, addUser
 from createMatrix import zeroMatrix, identityMatrix,scalarMatrix,constantMatrix,userMatrix
 
 def exitPro():
@@ -19,7 +19,17 @@ def exitPro():
 def mainMenu():
     """This is MENU bar here is where you can select various options to perform your actions
     """
+    
     while True:
+
+        question = input("Are you an existing user? (y/n)").lower()
+        if user == 'n':
+            userName = input("Enter your name: ")
+            addUser(userName)
+            print('\n...')
+            time.sleep(1)
+            print("Succefully added!" + userName)
+            print(userName + ', welcome!')
         print("\n__MENU__")
         print("1. Create a NewMatrix")
         print("3. Matrix Operations")
@@ -82,7 +92,7 @@ def getOptions():
         '5': 'userMatrix'
     }
 
-    choice = input("Enter a given")
+    choice = input("Enter a choice to retrieve your data from: ")
     matrixName = matrices.get(choice, lambda : print("Invalid Choice"))
     getData(matrixName)
 
