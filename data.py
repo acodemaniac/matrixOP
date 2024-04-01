@@ -1,26 +1,56 @@
 import json
-import numpy as np
+import time
 
-def addUser(userName):
-    try:
-        with open('data.json', 'r') as f:
-            matrixData = json.load(f)
-        matrixData[userName] = {
-            'zeroMatrix' : {},
-            'identityMatrix' : {},
-            'constantMatrix': {},
-            'scalarMatrix' : {},
-            'userMatrix' : {}
-            }
-    except FileNotFoundError:
-            print("Please enter  a valid file name.")
+def addUser():
+    """Creates a New User and Checks if the User Name already exists or not."""
 
-def existingUser(userName):
-    try:
-        with open('data.json', 'r') as f:
-            mData = json.load(f)
-        if userName =
+    while True:
+        try:
+            userName = input("Enter your new username: ")
+            with open('data.json', 'r') as f:
+                mData = json.load(f)
+            if userName in mData:
+                print("Username already exists. Please choose a different one.")
+            else:
+                mData[userName] = {
+                    'zeroMatrix': {},
+                    'identityMatrix': {},
+                    'constantMatrix': {},
+                    'scalarMatrix': {},
+                    'userMatrix': {}
+                }
+                with open('data.json', 'w') as f:
+                    json.dump(mData, f)
+                print("User added successfully!")
+                break
+        except FileNotFoundError:
+            print("File not found. Please provide a valid file name.")
+        except json.JSONDecodeError:
+            print("Invalid JSON format in data file. Please ensure the file contains valid JSON.")
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
 
+def existingUser():
+    while True:
+        try: 
+            userName = input("Enter your username: ")
+            with open('data.json', 'r') as f:
+                mData = json.load(f)
+            if userName in mData:
+                print("Loading profile...")
+                time.sleep(1)
+                print(f"Welcome back, {userName}!")
+                break
+            else:
+                print("Username does not exist. Please create an account.")
+                addUser()
+                break
+        except FileNotFoundError:
+            print("File not found. Please provide a valid file name.")
+        except json.JSONDecodeError:
+            print("Invalid JSON format in data file. Please ensure the file contains valid JSON.")
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
 
 def storeData(funName, varName, tempData):
     """Stores Data in the given matrixData dictionary
@@ -48,7 +78,7 @@ def getData(matrixName):
         data: It helps in  getting the data of the specific key."""
 
     while True:
-        
+
         try:
             with open('data.json', 'r') as f:
                 mData = json.load(f)

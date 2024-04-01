@@ -17,29 +17,26 @@ def exitPro():
 
 
 def mainMenu():
-    """This is MENU bar here is where you can select various options to perform your actions
-    """
-    
+    """This is MENU bar here is where you can select various options to perform your actions"""
+
     try:
-        question = input("Are you an existing user? (y/n)").upper()
-        if user == 'Y':
-            userName = input("Enter you name: ")
-            existingUser(userName)
-            None
-        if user == 'N':
-            userName = input("Enter your name: ")
-            addUser(userName)
+        question = input("Are you an existing user? (y/n): ").upper()
+        if question == 'Y':
+            existingUser()
+            time.sleep(1)
+        elif question == 'N':
+            addUser()
             print('\n...')
             time.sleep(1)
-            print("Successfully added!" + userName)
-            print(userName + ', welcome!')
+            print("Successfully added!")
+        else:
+            print("Invalid input. Please enter 'Y' for Yes or 'N' for No only.")
+            return
     except ValueError:
         print("Please enter 'Y' for Yes or 'N' for No only.")
 
     while True:
-
-        
-        print("\n__MENU__")
+        print("\n\t__MENU__")
         print("1. Create a NewMatrix")
         print("3. Matrix Operations")
         print("4. Load the Matrix Data")
