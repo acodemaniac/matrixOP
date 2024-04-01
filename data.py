@@ -53,7 +53,7 @@ def existingUser():
         except Exception as e:
             print(f"An error occurred: {str(e)}")
 
-def storeData(funName, varName, tempData):
+def storeData(userName, varName, tempData):
     """Stores Data in the given matrixData dictionary
 
     Args:
@@ -65,11 +65,11 @@ def storeData(funName, varName, tempData):
             matrixData = json.load(f)
     except FileNotFoundError:
             print("Please enter  a valid file name.")
-    matrixData[funName][varName] = tempData.tolist()
+    matrixData[userName][varName] = tempData.tolist()
     with open('data.json', 'w') as f:
         json.dump(matrixData, f)
 
-def getData(matrixName):
+def getData(userName, matrixName):
     """Gets Data from the matrixData dictionary
 
     Args:
@@ -79,11 +79,10 @@ def getData(matrixName):
         data: It helps in  getting the data of the specific key."""
 
     while True:
-
         try:
             with open('data.json', 'r') as f:
                 mData = json.load(f)
-            print(np.array(mData[matrixName][input('Enter the variable name: ')]))
+            print(np.array(mData[userName][matrixName][input('Enter the variable name: ')]))
             break
         except FileNotFoundError:
             print(f"File '{mData.json}' not found. Please provide a valid filename.")

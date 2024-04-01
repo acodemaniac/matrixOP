@@ -16,11 +16,17 @@ def exitPro():
         mainMenu()
 
 
-def mainMenu():
-    """This is MENU bar here is where you can select various options to perform your actions"""
+def manageUser():
 
     try:
-        que = input("Are you an existing user? (y/n): ").upper()
+        with open('data.json', 'x') as f:
+            f.write('{}')
+        print("New data.json file created.")
+    except FileExistsError:
+        print("data.json file already exists.")
+    
+    try:
+        question = input("Are you an existing user? (y/n): ").upper()
         if question == 'Y':
             existingUser()
             time.sleep(1)
@@ -34,6 +40,11 @@ def mainMenu():
             return
     except ValueError:
         print("Please enter 'Y' for Yes or 'N' for No only.")
+        
+    mainMenu()
+
+def mainMenu():
+    """This is MENU bar here is where you can select various options to perform your actions"""
 
     while True:
         print("\n\t__MENU__")
@@ -104,4 +115,4 @@ def getOptions():
 
 
 if __name__ == "__main__":
-    mainMenu()
+    manageUser()
