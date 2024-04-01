@@ -6,6 +6,7 @@ def addUser():
 
     while True:
         try:
+            global userName
             userName = input("Enter your new username: ")
             with open('data.json', 'r') as f:
                 mData = json.load(f)
@@ -21,7 +22,6 @@ def addUser():
                 }
                 with open('data.json', 'w') as f:
                     json.dump(mData, f)
-                print("User added successfully!")
                 break
         except FileNotFoundError:
             print("File not found. Please provide a valid file name.")
@@ -32,7 +32,8 @@ def addUser():
 
 def existingUser():
     while True:
-        try: 
+        try:
+            global userName 
             userName = input("Enter your username: ")
             with open('data.json', 'r') as f:
                 mData = json.load(f)

@@ -20,7 +20,7 @@ def mainMenu():
     """This is MENU bar here is where you can select various options to perform your actions"""
 
     try:
-        question = input("Are you an existing user? (y/n): ").upper()
+        que = input("Are you an existing user? (y/n): ").upper()
         if question == 'Y':
             existingUser()
             time.sleep(1)
