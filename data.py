@@ -1,19 +1,18 @@
 import json
 import time
+import numpy as np
 
 def addUser():
     """Creates a New User and Checks if the User Name already exists or not."""
-
     while True:
         try:
-            global userName
-            userName = input("Enter your new username: ")
+            username = input("Enter your new username: ")
             with open('data.json', 'r') as f:
                 mData = json.load(f)
-            if userName in mData:
+            if username in mData:
                 print("Username already exists. Please choose a different one.")
             else:
-                mData[userName] = {
+                mData[username] = {
                     'zeroMatrix': {},
                     'identityMatrix': {},
                     'constantMatrix': {},
@@ -33,14 +32,13 @@ def addUser():
 def existingUser():
     while True:
         try:
-            global userName 
-            userName = input("Enter your username: ")
+            username = input("Enter your username: ")
             with open('data.json', 'r') as f:
                 mData = json.load(f)
-            if userName in mData:
+            if username in mData:
                 print("Loading profile...")
                 time.sleep(1)
-                print(f"Welcome back, {userName}!")
+                print(f"Welcome back, {username}!")
                 break
             else:
                 print("Username does not exist. Please create an account.")
@@ -53,40 +51,45 @@ def existingUser():
         except Exception as e:
             print(f"An error occurred: {str(e)}")
 
-def storeData(userName, varName, tempData):
+def storeData(username, varName, tempData):
     """Stores Data in the given matrixData dictionary
 
     Args:
-        variableName (string): Key for matrixData
-        data (matrix): Value for matrixData"""
-
+        username (string): User's username
+        varName (string): Key for matrixData
+        tempData (numpy.ndarray): Value for matrixData"""
     try:
         with open('data.json', 'r') as f:
             matrixData = json.load(f)
     except FileNotFoundError:
-            print("Please enter  a valid file name.")
-    matrixData[userName][varName] = tempData.tolist()
+        print("Please enter a valid file name.")
+        return
+
+    matrixData[username][varName] = tempData.tolist()
     with open('data.json', 'w') as f:
         json.dump(matrixData, f)
 
-def getData(userName, matrixName):
+def getData(username, matrixName):
     """Gets Data from the matrixData dictionary
 
     Args:
-        variableName (string): It's a given key for the matrixData dictionary 
+        username (string): User's username
+        matrixName (string): Name of the matrix to retrieve
 
     Returns:
-        data: It helps in  getting the data of the specific key."""
-
+        numpy.ndarray: Data of the specified matrix"""
     while True:
         try:
             with open('data.json', 'r') as f:
                 mData = json.load(f)
-            print(np.array(mData[userName][matrixName][input('Enter the variable name: ')]))
-            break
+            variable_name = input('Enter the variable name: ')
+            if variable_name not in mData[username][matrixName]:
+                print("Variable name not found. Please enter a valid variable name.")
+                continue
+            return np.array(mData[username][matrixName][variable_name])
         except FileNotFoundError:
-            print(f"File '{mData.json}' not found. Please provide a valid filename.")
-        except KeyError:
-            print("Variable name not found. Please enter a valid variable name.")
+            print("File 'data.json' not found. Please provide a valid filename.")
         except json.JSONDecodeError:
             print("Error decoding JSON. File 'data.json' may be corrupted.")
+        except KeyError:
+            print("Key not found in JSON data.")
