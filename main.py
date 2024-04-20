@@ -20,7 +20,7 @@ def exitPro():
 
 def manageUser():
     
-    filename = 'data.json' #change the file_name according to you
+    filename = 'data.json' #change the file_name according .json file_name
     if not os.path.exists(filename) or os.path.getsize(filename) == 0:
         try:
             with open(filename, 'w') as f:
