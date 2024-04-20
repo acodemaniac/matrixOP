@@ -2,6 +2,8 @@ import sys
 import time
 from data import getData, addUser
 from createMatrix import zeroMatrix, identityMatrix,scalarMatrix,constantMatrix,userMatrix
+import os
+import json
 
 def exitPro():
 
@@ -17,13 +19,15 @@ def exitPro():
 
 
 def manageUser():
-
-    try:
-        with open('data.json', 'x') as f:
-            f.write('{}')
-        print("New data.json file created.")
-    except FileExistsError:
-        print("data.json file already exists.")
+    
+    filename = 'data.json' #change the file_name according to you
+    if not os.path.exists(filename) or os.path.getsize(filename) == 0:
+        try:
+            with open(filename, 'w') as f:
+                json.dump({}, f) 
+                print("Eror") 
+        except FileExistsError:
+            print("data.json file already exists.")
     
     try:
         question = input("Are you an existing user? (y/n): ").upper()
