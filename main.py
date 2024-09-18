@@ -19,7 +19,7 @@ def exitPro():
 
 
 def manageUser():
-    
+
     filename = 'data.json' #change the file_name according .json file_name
     if not os.path.exists(filename) or os.path.getsize(filename) == 0:
         try:
@@ -28,7 +28,7 @@ def manageUser():
                 print("Eror") 
         except FileExistsError:
             print("data.json file already exists.")
-    
+
     try:
         question = input("Are you an existing user? (y/n): ").upper()
         if question == 'Y':
@@ -39,7 +39,7 @@ def manageUser():
             print('\n...')
             time.sleep(1)
             print("Successfully added!")
-        else:
+        else:                   
             print("Invalid input. Please enter 'Y' for Yes or 'N' for No only.")
             return
     except ValueError:

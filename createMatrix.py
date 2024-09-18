@@ -20,14 +20,14 @@ def zeroMatrix():
             break
         except ValueError:
             print("Please enter valid integer values for rows, columns, and dimensions")
-
-# The rest of your code remains the same
+        except TypeError:
+            print("Please enter a valid integer!")
 
 
 def identityMatrix():
     """Create an Identity Matrix"""
 
-    while True:
+    while True: 
         try:
             varName = input("Enter the Matrix name: ")
             tempData = np.eye(int(input(f"Enter size of the identity matrix for {varName}: ")))
@@ -36,6 +36,8 @@ def identityMatrix():
             break
         except ValueError:
             print("Please enter a valid size")
+        except TypeError:
+            print("Please enter a valid integer!")
 
 def constantMatrix():
     """Creates a Constant Matrix"""
@@ -51,6 +53,8 @@ def constantMatrix():
             break
         except ValueError:
             print("Please enter valid constant value, row and column. ")
+        except TypeError:
+            print("Please enter a valid integer!")            
 
 def userMatrix():
     """Creates a user-defined matrix"""
@@ -69,6 +73,8 @@ def userMatrix():
             break
         except ValueError:
             print("Please enter valid rows, columns, and elements")
+        except TypeError:
+            print("Please enter a valid integer!")
 
 def scalarMatrix():
     """Calls the Identity Matrix and then multiplies the given number by it."""
@@ -86,3 +92,7 @@ def scalarMatrix():
             break
         except ValueError:
             print("Please enter a valid size")
+        except TypeError:
+            print("Please enter a valid integer!")
+
+

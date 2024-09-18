@@ -23,11 +23,12 @@ def addUser():
                     json.dump(mData, f)
                 break
         except FileNotFoundError:
-            print("File not found. Please provide a valid file name.")
+            print("File not found please restart the program!!")
         except json.JSONDecodeError:
             print("Invalid JSON format in data file. Please ensure the file contains valid JSON.")
         except Exception as e:
             print(f"An error occurred: {str(e)}")
+
 
 def existingUser():
     while True:
@@ -45,11 +46,12 @@ def existingUser():
                 addUser()
                 break
         except FileNotFoundError:
-            print("File not found. Please provide a valid file name.")
+            print("File not found please restart the program!!")
         except json.JSONDecodeError:
             print("Invalid JSON format in data file. Please ensure the file contains valid JSON.")
         except Exception as e:
             print(f"An error occurred: {str(e)}")
+
 
 def storeData(username, varName, tempData):
     """Stores Data in the given matrixData dictionary
@@ -58,16 +60,18 @@ def storeData(username, varName, tempData):
         username (string): User's username
         varName (string): Key for matrixData
         tempData (numpy.ndarray): Value for matrixData"""
+
     try:
         with open('data.json', 'r') as f:
             matrixData = json.load(f)
     except FileNotFoundError:
-        print("Please enter a valid file name.")
+        print("File not found please restart the program!!")
         return
 
     matrixData[username][varName] = tempData.tolist()
     with open('data.json', 'w') as f:
         json.dump(matrixData, f)
+
 
 def getData(username, matrixName):
     """Gets Data from the matrixData dictionary
@@ -78,6 +82,7 @@ def getData(username, matrixName):
 
     Returns:
         numpy.ndarray: Data of the specified matrix"""
+
     while True:
         try:
             with open('data.json', 'r') as f:
@@ -88,7 +93,7 @@ def getData(username, matrixName):
                 continue
             return np.array(mData[username][matrixName][variable_name])
         except FileNotFoundError:
-            print("File 'data.json' not found. Please provide a valid filename.")
+            print("File not found please restart the program!!")
         except json.JSONDecodeError:
             print("Error decoding JSON. File 'data.json' may be corrupted.")
         except KeyError:
